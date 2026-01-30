@@ -1,0 +1,12 @@
+{
+    "image1": {
+        "data": "hwQQABAAAAAAAAAAAAAA7gAAAAAAAODuAAAAAAAA7u4AAAAAAADv7gAAAAAA4O/uAAAAAADsL+4AAAAA7kwsIszMz+9OTEwi3b1PT1VCQkQAAAAAIlJCRAAAAAAAIk9EAAAAAAAgX0UAAAAAAABCVAAAAAAAACJEAAAAAAAAICIAAAAAAAAAIg==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Player Ship"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
