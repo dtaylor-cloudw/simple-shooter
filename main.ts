@@ -37,8 +37,14 @@ let SpaceShip: Sprite = null
 effects.starField.startScreenEffect()
 SpaceShip = sprites.create(assets.image`Player Ship`, SpriteKind.Player)
 SpaceShip.setPosition(78, 111)
-controller.moveSprite(SpaceShip, 100, 0)
-SpaceShip.setStayInScreen(true)
+game.onUpdate(function () {
+    controller.moveSprite(SpaceShip, 100, 0)
+    SpaceShip.setStayInScreen(true)
+})
+game.onUpdate(function () {
+    game.setGameOverEffect(false, effects.melt)
+    game.setGameOverMessage(false, "YOU LOSE!!!!")
+})
 game.onUpdateInterval(1000, function () {
     Asteroid = sprites.createProjectileFromSide(img`
         . . . . . c c b b b . . . . . . 
