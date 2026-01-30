@@ -1,5 +1,6 @@
 {
     "name": "Simple Shooter",
+    "version": "0.0.1",
     "description": "",
     "dependencies": {
         "device": "*"
