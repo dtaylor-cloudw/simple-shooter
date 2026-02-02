@@ -1,3 +1,4 @@
+// When A button is pressed state
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (sprites.allOfKind(SpriteKind.Projectile).length < 2) {
         projectile = sprites.createProjectileFromSprite(img`
@@ -21,30 +22,36 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         music.play(music.melodyPlayable(music.pewPew), music.PlaybackMode.UntilDone)
     }
 })
+// When you shoot a sprite
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
     sprites.destroy(sprite, effects.disintegrate, 500)
     sprites.destroy(otherSprite)
     info.changeScoreBy(1)
 })
+// When a sprite hits the player
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite2, otherSprite2) {
     sprites.destroy(otherSprite2, effects.fire, 500)
     scene.cameraShake(4, 500)
     info.changeLifeBy(-1)
 })
+// Run at start of game.
 let Asteroid: Sprite = null
 let projectile: Sprite = null
 let SpaceShip: Sprite = null
 effects.starField.startScreenEffect()
 SpaceShip = sprites.create(assets.image`Player Ship`, SpriteKind.Player)
 SpaceShip.setPosition(78, 111)
+// Move spaceship state
 game.onUpdate(function () {
     controller.moveSprite(SpaceShip, 100, 0)
     SpaceShip.setStayInScreen(true)
 })
+// Game Over state.
 game.onUpdate(function () {
     game.setGameOverEffect(false, effects.melt)
     game.setGameOverMessage(false, "YOU LOSE!!!!")
 })
+// Generate an asteroid every second.
 game.onUpdateInterval(1000, function () {
     Asteroid = sprites.createProjectileFromSide(img`
         . . . . . c c b b b . . . . . . 
